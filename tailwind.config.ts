@@ -9,10 +9,33 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primary: {
+          100: "#F4F9F3",
+          200: "#D3EAD0",
+          300: "#B3D8AC",
+          400: "#91C789",
+          500: "#759F6D",
+          600: "#577752",
+          700: "#3A5137",
+        },
+        secondary: {
+          100: "#FFF3F3",
+          200: "#FFD4CE",
+          300: "#FFB3AB",
+          400: "#FF9386",
+          500: "#CC756B",
+          600: "#995950",
+          700: "#663B35",
+        },
+        gray: {
+          100: "#CCCCCC",
+          200: "#BBBBBB",
+          300: "#777777",
+          400: "#222222",
+        },
       },
     },
   },
+  darkMode: "class",
   plugins: [],
 } satisfies Config;
