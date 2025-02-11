@@ -3,6 +3,6 @@ interface CardTitleProps {
 }
 export function CardTitle({title} : CardTitleProps){
     return(
-        <h5 className="text-gray-400 text-xl font-medium w-full">{title}</h5>
+        <p className="text-gray-400 text-xl font-medium w-full">{title}</p>
     )
 }
