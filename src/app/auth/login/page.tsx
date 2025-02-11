@@ -2,7 +2,7 @@
 
 import Divider from "@/app/components/Divider";
 import Image from "next/image";
-import LoginForm from "./LoginForm";
+import LoginForm from "../../components/forms/auth/LoginForm";
 import AuthIllustration from "@/app/components/AuthIllustration";
 import Button from "@/app/components/Button";
 

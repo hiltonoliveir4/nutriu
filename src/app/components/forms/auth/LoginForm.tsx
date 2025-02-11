@@ -4,8 +4,10 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import Input from "@/app/components/Input";
 import Button from "@/app/components/Button";
-import { EyeClosed, UserRound } from "lucide-react";
+import { Eye, EyeClosed, UserRound } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
+import PasswordInput from "../../PasswordInput";
 
 export default function LoginForm(){
   const formik = useFormik({
@@ -36,10 +38,8 @@ export default function LoginForm(){
         onBlur={formik.handleBlur}
         errors={formik.touched.email && formik.errors.email ? formik.errors.email : ""}
       />
-      <Input 
-        rigthIcon={<EyeClosed size={18} className="text-primary-700" />}
+      <PasswordInput 
         label="Senha"
-        type="password"
         name="password"
         placeholder="Sua senha"
         value={formik.values.password}
