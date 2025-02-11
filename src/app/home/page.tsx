@@ -24,6 +24,63 @@ const week = [
     { name: 'Domingo', date: '16/02/2025' },
 ]
 
+interface Meal {
+    title: string,
+    theme: "primary" | "secondary" | "accent-yellow" | "accent-blue" | "accent-purple" | "bordered"
+    foods: Food[]
+}
+
+interface Food {
+    name: string, 
+    quantity: string, 
+    unit: string 
+}
+
+const meals : Meal[] = [
+    {
+        title: "Café da manhã", theme: "accent-yellow",
+        foods: [
+            { name: "Café", quantity: "150", unit: "mL" },
+            { name: "Ovo", quantity: "100", unit: "g" },
+            { name: "Pão", quantity: "150", unit: "g" },
+        ]
+    },
+    {
+        title: "Almoço", theme: "secondary",
+        foods: [
+            { name: "Arroz Integral", quantity: "150", unit: "g" },
+            { name: "Frango", quantity: "200", unit: "g" },
+            { name: "Batata", quantity: "100", unit: "g" },
+            { name: "Salada", quantity: "100", unit: "g" },
+            { name: "Suco de uva", quantity: "100", unit: "mL" },
+        ]
+    },
+    {
+        title: "Lanche da tarde", theme: "accent-purple",
+        foods: [
+            { name: "Whey Protein", quantity: "30", unit: "g" },
+            { name: "Leite", quantity: "250", unit: "mL" },
+            { name: "Banana", quantity: "100", unit: "g" },
+        ]
+    },
+    {
+        title: "Jantar", theme: "accent-blue",
+        foods: [
+            { name: "Arroz Integral", quantity: "150", unit: "g" },
+            { name: "Frango", quantity: "200", unit: "g" },
+            { name: "Batata", quantity: "100", unit: "g" },
+            { name: "Salada", quantity: "100", unit: "g" },
+            { name: "Suco de uva", quantity: "100", unit: "mL" },
+        ]
+    },
+    {
+        title: "Ceia", theme: "bordered",
+        foods: [
+            { name: "Mingau de aveia", quantity: "200", unit: "g" },
+        ]
+    }
+]
+
 export default function Home() {
     return (
         <main className="flex flex-col w-full bg-white md:w-[840px] m-auto px-5 py-7">
@@ -47,24 +104,28 @@ export default function Home() {
             <div className="flex flex-col mt-10 gap-3">
                 <SectionTitle title="Quarta-Feira" details="12/02" />
                 <div className="flex items-center gap-3 overflow-x-auto whitespace-nowrap md:flex-wrap md:whitespace-normal">
-                    <Card.Root theme="accent-yellow">
-                        <Card.Illustration width={210} height={150} src={"/illustrations/foodanddrink.svg"} alt="Comida e bebida" />
-                        <Card.Title title="Almoço" />
-                        <Card.Content>
-                            <FoodItem.Root>
-                                <FoodItem.Icon icon={ChefHat} />
-                                <FoodItem.Description description="Arroz Integral" />
-                                <FoodItem.Quantity quantity="200" unit="g" />
-                            </FoodItem.Root>
-                        </Card.Content>
-                    </Card.Root>
+                    {meals.map((meal, key) =>  
+                        <Card.Root key={key} theme={meal.theme}>
+                            <Card.Illustration width={210} height={150} src={"/illustrations/foodanddrink.svg"} alt="Comida e bebida" />
+                            <Card.Title title={meal.title} />
+                            <Card.Content>
+                                {meal.foods.map( (food, key) => 
+                                    <FoodItem.Root key={key}>
+                                        <FoodItem.Icon icon={ChefHat} />
+                                        <FoodItem.Description description={food.name} />
+                                        <FoodItem.Quantity quantity={food.quantity} unit={food.unit} />
+                                    </FoodItem.Root>
+                                )}
+                            </Card.Content>
+                        </Card.Root>
+                    )}
                 </div>
             </div>
             <div className="flex flex-col mt-10 gap-3">
                 <SectionTitle title="Minha semana" />
                 <div className="flex gap-3 overflow-x-auto whitespace-nowrap md:flex-wrap md:whitespace-normal">
                     {week.map((day, key) =>
-                        <InfoChip.Root>
+                        <InfoChip.Root key={key}>
                             <InfoChip.Icon icon={CalendarFold} theme="secondary"></InfoChip.Icon>
                             <InfoChip.Content text={day.name} description={day.date}></InfoChip.Content>
                             <InfoChip.Action icon={ChevronRight}></InfoChip.Action>
