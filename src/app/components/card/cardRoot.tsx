@@ -19,7 +19,7 @@ export function CardRoot({children, id, theme = "primary"} : CardRootProps){
     //TODO: adicionar onclick
     //TODO: adicionar cursor pointer caso tenha onclick
     return(
-        <div id={id} className={`${themes[theme]} flex flex-col items-center w-64 p-5 gap-2 rounded-3xl flex-shrink-0`}>
+        <div id={id} className={`${themes[theme]} shadow-md mb-2 flex flex-col items-center w-64 p-5 gap-2 rounded-3xl flex-shrink-0`}>
             {children}
         </div>
     )

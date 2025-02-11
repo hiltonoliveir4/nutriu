@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { Supermercado_One, Work_Sans } from "next/font/google";
+import { Work_Sans } from "next/font/google";
 import "./globals.css";
+import Header from "./components/ui/Header";
+import NavigationMenu from "./components/ui/NavigationMenu";
 
 const workSans = Work_Sans({
   variable: "--font-work-sans",
@@ -19,10 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${workSans.variable} antialiased`}
-      >
+      <body className={`${workSans.variable} antialiased`}>
+        <Header />
         {children}
+        <NavigationMenu />
       </body>
     </html>
   );

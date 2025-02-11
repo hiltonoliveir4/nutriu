@@ -83,7 +83,7 @@ const meals : Meal[] = [
 
 export default function Home() {
     return (
-        <main className="flex flex-col w-full bg-white md:w-[840px] m-auto px-5 py-7">
+        <main className="flex flex-col w-full bg-white md:w-[840px] m-auto pl-5 md:pr-5 py-7">
             <Welcome name="Hilton Oliveira" />
             <div className="flex flex-col mt-10 gap-3">
                 <SectionTitle title="Minhas metas" />
@@ -103,7 +103,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col mt-10 gap-3">
                 <SectionTitle title="Quarta-Feira" details="12/02" />
-                <div className="flex items-center gap-3 overflow-x-auto whitespace-nowrap md:flex-wrap md:whitespace-normal">
+                <div className="flex items-center gap-3 pr-3 md:pr-0 overflow-x-auto whitespace-nowrap md:flex-wrap md:whitespace-normal">
                     {meals.map((meal, key) =>  
                         <Card.Root key={key} theme={meal.theme}>
                             <Card.Illustration width={210} height={150} src={"/illustrations/foodanddrink.svg"} alt="Comida e bebida" />
@@ -121,9 +121,9 @@ export default function Home() {
                     )}
                 </div>
             </div>
-            <div className="flex flex-col mt-10 gap-3">
+            <div className="flex flex-col mt-10 my-20 gap-3">
                 <SectionTitle title="Minha semana" />
-                <div className="flex gap-3 overflow-x-auto whitespace-nowrap md:flex-wrap md:whitespace-normal">
+                <div className="flex gap-3 pb-2 pr-3 md:pr-0 overflow-x-auto whitespace-nowrap md:flex-wrap md:whitespace-normal">
                     {week.map((day, key) =>
                         <InfoChip.Root key={key}>
                             <InfoChip.Icon icon={CalendarFold} theme="secondary"></InfoChip.Icon>
