@@ -1,9 +1,9 @@
 import { CalendarFold, ChefHat, ChevronRight } from "lucide-react";
-import Welcome from "../components/Welcome";
+import Welcome from "../components/ui/Welcome";
 import { InfoChip } from "../components/infoChip";
 import { Card } from "../components/card";
 import { FoodItem } from "../components/foodItem";
-import SectionTitle from "../components/SectionTitle";
+import SectionTitle from "../components/ui/SectionTitle";
 
 const goals = [
     { nutrient: "Proteína", quantity: "150", unit: "g" },

@@ -2,11 +2,11 @@
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import Input from "@/app/components/Input";
-import Button from "@/app/components/Button";
+import Input from "@/app/components/ui/Input";
+import Button from "@/app/components/ui/Button";
 import { UserRound } from "lucide-react";
 import Link from "next/link";
-import PasswordInput from "../../PasswordInput";
+import PasswordInput from "../../ui/PasswordInput";
 
 export default function LoginForm(){
   const formik = useFormik({

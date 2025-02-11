@@ -1,10 +1,10 @@
 "use client"
 
-import Divider from "@/app/components/Divider";
+import Divider from "@/app/components/ui/Divider";
 import Image from "next/image";
 import LoginForm from "../../components/forms/auth/LoginForm";
-import AuthIllustration from "@/app/components/AuthIllustration";
-import Button from "@/app/components/Button";
+import AuthIllustration from "@/app/components/ui/AuthIllustration";
+import Button from "@/app/components/ui/Button";
 
 export default function Login() {
     return (
