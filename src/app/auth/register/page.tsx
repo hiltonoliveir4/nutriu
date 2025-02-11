@@ -9,7 +9,7 @@ export default function Login() {
                 <Image src={"/illustrations/auth.svg"} width={500} height={500} alt={"Celular e Homem"}></Image>
             </div>
             <div className="flex flex-col items-center justify-center min-h-screen w-full px-12 gap-8 md:max-w-md">
-                <Image className="md:hidden" src={"/icons/nutriuLogo.svg"} alt="Logo do Nutriu" width={134} height={60}></Image>
+                <Image className="md:hidden m-6" src={"/icons/nutriuLogo.svg"} alt="Logo do Nutriu" width={134} height={60}></Image>
                 <RegisterForm />
             </div>
         </div>

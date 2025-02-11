@@ -11,7 +11,7 @@ export default function Login() {
         <div className="flex items-center justify-center w-full">
             <AuthIllustration />
             <div className="flex flex-col items-center justify-center min-h-screen w-full px-12 gap-8 md:max-w-md">
-                <Image className="md:hidden" src={"/icons/nutriuLogo.svg"} alt="Logo do Nutriu" width={134} height={60}></Image>
+                <Image className="md:hidden m-6" src={"/icons/nutriuLogo.svg"} alt="Logo do Nutriu" width={134} height={60}></Image>
                 <Button 
                     type="submit" 
                     className="border-2 border-gray-100 rounded-xl w-full p-3"

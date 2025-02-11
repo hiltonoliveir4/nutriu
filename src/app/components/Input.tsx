@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 
 interface InputProps {
     label?: string;
-    rigthIcon?: ReactNode;
+    rightIcon?: ReactNode;
     leftIcon?: ReactNode;
     type: 'password' | 'email' | 'text';
     name: string;
@@ -12,10 +12,10 @@ interface InputProps {
     onBlur?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     errors?: string;
     onLeftIconClick?: () => void;
-    onRigthIconClick?: () => void;
+    onrightIconClick?: () => void;
 }
 
-export default function Input({ label, rigthIcon, leftIcon, type, name, placeholder, value, errors, onChange, onBlur, onLeftIconClick, onRigthIconClick }: InputProps) {
+export default function Input({ label, rightIcon, leftIcon, type, name, placeholder, value, errors, onChange, onBlur, onLeftIconClick, onrightIconClick }: InputProps) {
     return (
         <div className='flex flex-col gap-3 mb-3'>
             <label htmlFor={name} className="text-gray-300 font-medium text-lg">{label}</label>
@@ -33,7 +33,7 @@ export default function Input({ label, rigthIcon, leftIcon, type, name, placehol
                     onChange={onChange}
                     onBlur={onBlur}
                 />
-                {rigthIcon && <span onClick={onRigthIconClick} className="absolute right-4">{rigthIcon}</span>}
+                {rightIcon && <span onClick={onrightIconClick} className="absolute right-4">{rightIcon}</span>}
             </div>
             {errors &&
                 <span className='text-sm text-secondary-600'> {errors} </span>

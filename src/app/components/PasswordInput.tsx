@@ -25,8 +25,8 @@ export default function PasswordInput({name, label, placeholder, value, errors, 
 
     return (
         <Input
-            rigthIcon={passwordIcon}
-            onRigthIconClick={togglePasswordVisibility}
+            rightIcon={passwordIcon}
+            onrightIconClick={togglePasswordVisibility}
             label={label}
             type={showPassword ? "text" : "password"}
             name={name}
