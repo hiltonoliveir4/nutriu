@@ -2,13 +2,17 @@
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import Input from "@/app/components/ui/Input";
-import Button from "@/app/components/ui/Button";
+import Input from "@/components/ui/Input";
+import Button from "@/components/ui/Button";
 import { UserRound } from "lucide-react";
 import Link from "next/link";
 import PasswordInput from "../../ui/PasswordInput";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function RegisterForm() {
+  const router = useRouter()
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -25,11 +29,17 @@ export default function RegisterForm() {
         .required('A confirmação da senha é obrigatória'),
     }),
     onSubmit: (values) => {
-      console.log('Nome:', values.name);
-      console.log('Email:', values.email);
-      console.log('Password:', values.password);
+      handleSubmit(values)
     },
   });
+
+  async function handleSubmit(values: { name: string, email: string, password: string }) {
+    await signIn("register", {
+      ...values,
+      redirect: true,
+      callbackUrl: '/app',
+    });
+  }
 
   return (
     <form onSubmit={formik.handleSubmit} className="bg-white w-full">

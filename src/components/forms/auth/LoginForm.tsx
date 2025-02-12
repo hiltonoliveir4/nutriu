@@ -2,13 +2,17 @@
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import Input from "@/app/components/ui/Input";
-import Button from "@/app/components/ui/Button";
+import Input from "@/components/ui/Input";
+import Button from "@/components/ui/Button";
 import { UserRound } from "lucide-react";
 import Link from "next/link";
 import PasswordInput from "../../ui/PasswordInput";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
-export default function LoginForm(){
+export default function LoginForm() {
+  const router = useRouter()
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -19,14 +23,21 @@ export default function LoginForm(){
       password: Yup.string().required('A senha é obrigatória'),
     }),
     onSubmit: (values) => {
-      console.log('Email:', values.email);
-      console.log('Password:', values.password);
+      handleSubmit(values)
     },
   });
 
+  async function handleSubmit(values: { email: string, password: string }) {
+    await signIn("credentials", {
+      ...values,
+      redirect: true,
+      callbackUrl: '/app',
+    });
+  }
+
   return (
     <form onSubmit={formik.handleSubmit} className="bg-white w-full">
-      <Input 
+      <Input
         leftIcon={<UserRound size={18} className="text-primary-700" />}
         label="E-mail"
         type="email"
@@ -37,7 +48,7 @@ export default function LoginForm(){
         onBlur={formik.handleBlur}
         errors={formik.touched.email && formik.errors.email ? formik.errors.email : ""}
       />
-      <PasswordInput 
+      <PasswordInput
         label="Senha"
         name="password"
         placeholder="Sua senha"
@@ -47,8 +58,8 @@ export default function LoginForm(){
         errors={formik.touched.password && formik.errors.password ? formik.errors.password : ""}
       />
       <div className="flex flex-col justify-center items-center gap-3 mt-12 mb-3">
-        <Button 
-          className="bg-secondary-400 text-white py-5 px-7 w-64 rounded-2xl text-xl" 
+        <Button
+          className="bg-secondary-400 text-white py-5 px-7 w-64 rounded-2xl text-xl"
           type="submit"
           text="Login" />
         <span className="text-base text-gray-300 font-normal">

@@ -1,16 +1,16 @@
 "use client"
 
-import Divider from "@/app/components/ui/Divider";
+import Divider from "@/components/ui/Divider";
 import Image from "next/image";
-import LoginForm from "../../components/forms/auth/LoginForm";
-import AuthIllustration from "@/app/components/ui/AuthIllustration";
-import Button from "@/app/components/ui/Button";
+import LoginForm from "@/components/forms/auth/LoginForm";
+import AuthIllustration from "@/components/ui/AuthIllustration";
+import Button from "@/components/ui/Button";
 
 export default function Login() {
     return (
-        <div className="flex items-center justify-center w-full">
+        <div className="flex items-center justify-center w-full min-h-screen">
             <AuthIllustration />
-            <div className="flex flex-col items-center justify-center min-h-screen w-full px-12 gap-8 md:max-w-md">
+            <div className="flex flex-col items-center justify-center w-full px-12 gap-8 md:max-w-md">
                 <Image className="md:hidden m-6" src={"/icons/nutriuLogo.svg"} alt="Logo do Nutriu" width={134} height={60}></Image>
                 <Button 
                     type="submit" 

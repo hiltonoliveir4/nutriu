@@ -1,9 +1,10 @@
 import { CalendarFold, ChefHat, ChevronRight } from "lucide-react";
-import Welcome from "../components/ui/Welcome";
-import { InfoChip } from "../components/infoChip";
-import { Card } from "../components/card";
-import { FoodItem } from "../components/foodItem";
-import SectionTitle from "../components/ui/SectionTitle";
+import Welcome from "@/components/ui/Welcome";
+import { InfoChip } from "@/components/infoChip";
+import { Card } from "@/components/card";
+import { FoodItem } from "@/components/foodItem";
+import SectionTitle from "@/components/ui/SectionTitle";
+import { auth } from "@/services/auth";
 
 const goals = [
     { nutrient: "Proteína", quantity: "150", unit: "g" },
@@ -81,11 +82,13 @@ const meals : Meal[] = [
     }
 ]
 
-export default function Home() {
+export default async function Home() {
+    const session = await auth()
+
     return (
-        <main className="flex flex-col w-full bg-white md:w-[840px] m-auto pl-5 md:pr-5 py-7">
-            <Welcome name="Hilton Oliveira" />
-            <div className="flex flex-col mt-10 gap-3">
+        <main className="flex flex-col w-full bg-white md:w-[840px] m-auto py-7">
+            <Welcome name={session?.user?.name || ""} />
+            <div className="flex px-5 flex-col mt-10 gap-3">
                 <SectionTitle title="Minhas metas" />
                 <div className="flex flex-wrap gap-2">
                     {goals.map((goal, key) =>
@@ -102,8 +105,8 @@ export default function Home() {
                 </div>
             </div>
             <div className="flex flex-col mt-10 gap-3">
-                <SectionTitle title="Quarta-Feira" details="12/02" />
-                <div className="flex items-center gap-3 pr-3 md:pr-0 overflow-x-auto whitespace-nowrap md:flex-wrap md:whitespace-normal">
+                <SectionTitle className="px-5" title="Quarta-Feira" details="12/02" />
+                <div className="flex items-center gap-3 px-5 overflow-x-auto whitespace-nowrap md:flex-wrap md:whitespace-normal">
                     {meals.map((meal, key) =>  
                         <Card.Root key={key} theme={meal.theme}>
                             <Card.Illustration width={210} height={150} src={"/illustrations/foodanddrink.svg"} alt="Comida e bebida" />
@@ -122,8 +125,8 @@ export default function Home() {
                 </div>
             </div>
             <div className="flex flex-col mt-10 my-20 gap-3">
-                <SectionTitle title="Minha semana" />
-                <div className="flex gap-3 pb-2 pr-3 md:pr-0 overflow-x-auto whitespace-nowrap md:flex-wrap md:whitespace-normal">
+                <SectionTitle className="px-5" title="Minha semana" />
+                <div className="flex gap-3 pb-2 px-5 overflow-x-auto whitespace-nowrap md:flex-wrap md:whitespace-normal">
                     {week.map((day, key) =>
                         <InfoChip.Root key={key}>
                             <InfoChip.Icon icon={CalendarFold} theme="secondary"></InfoChip.Icon>
