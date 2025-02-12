@@ -8,6 +8,7 @@ interface InputProps {
     name: string;
     placeholder?: string;
     value: string;
+    required?: boolean;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onBlur?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     errors?: string;
@@ -15,10 +16,10 @@ interface InputProps {
     onrightIconClick?: () => void;
 }
 
-export default function Input({ label, rightIcon, leftIcon, type, name, placeholder, value, errors, onChange, onBlur, onLeftIconClick, onrightIconClick }: InputProps) {
+export default function Input({ label, rightIcon, leftIcon,required, type, name, placeholder, value, errors, onChange, onBlur, onLeftIconClick, onrightIconClick }: InputProps) {
     return (
         <div className='flex flex-col gap-3 mb-3'>
-            <label htmlFor={name} className="text-gray-300 font-medium text-lg">{label}</label>
+            <label htmlFor={name} className="text-gray-300 font-medium text-lg">{label}{required ? <span className='text-secondary-400'> *</span>:''}</label>
             <div className='relative flex items-center'>
                 {leftIcon && <span onClick={onLeftIconClick} className="absolute left-4">{leftIcon}</span>}
                 <input
