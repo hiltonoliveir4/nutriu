@@ -1,5 +1,5 @@
+import { X } from "lucide-react";
 import { ReactNode } from "react";
-import { IoClose } from 'react-icons/io5';
 
 interface FoodModalProps {
   isOpen: boolean;
@@ -21,7 +21,7 @@ export default function Modal({ isOpen,onClose,children,title }: FoodModalProps)
         onClick={onClose}
         className="absolute top-2 right-2 p-1 rounded-full hover:bg-gray-100 transition-colors"
       >
-        <IoClose className="w-6 h-6 text-gray-600" />
+        <X className="w-6 h-6 text-gray-600" />
       </button>
       <h2 className="text-xl font-bold mb-4">{title}</h2>
       {children}

@@ -8,10 +8,11 @@ import { UserRound } from "lucide-react";
 import Link from "next/link";
 import PasswordInput from "../../ui/PasswordInput";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
+import Loader from "@/components/ui/Loader";
 
 export default function LoginForm() {
-  const router = useRouter()
+  const [isLoading, setIsLoading] = useState(false)
 
   const formik = useFormik({
     initialValues: {
@@ -28,11 +29,13 @@ export default function LoginForm() {
   });
 
   async function handleSubmit(values: { email: string, password: string }) {
+    setIsLoading(true)
     await signIn("credentials", {
       ...values,
       redirect: true,
       callbackUrl: '/app',
     });
+    setIsLoading(false)
   }
 
   return (
@@ -59,9 +62,10 @@ export default function LoginForm() {
       />
       <div className="flex flex-col justify-center items-center gap-3 mt-12 mb-3">
         <Button
-          className="bg-secondary-400 text-white py-5 px-7 w-64 rounded-2xl text-xl"
+          className="bg-secondary-400 text-white py-5 px-7 w-64 h-16 rounded-2xl text-xl"
           type="submit"
-          text="Login" />
+          text={isLoading ? <Loader /> : "Login"} 
+          disabled={isLoading}/>
         <span className="text-base text-gray-300 font-normal">
           Não possui conta? {" "}
           <Link className="font-medium text-primary-400" href="/auth/register">Registre-se</Link>
